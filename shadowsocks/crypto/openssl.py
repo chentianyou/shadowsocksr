@@ -113,6 +113,9 @@ class OpenSSLCrypto(object):
 
 
 ciphers = {
+    'aes-128-gcm': (16, 16, OpenSSLCrypto),
+    'aes-192-gcm': (24, 16, OpenSSLCrypto),
+    'aes-256-gcm': (32, 16, OpenSSLCrypto),
     'aes-128-cfb': (16, 16, OpenSSLCrypto),
     'aes-192-cfb': (24, 16, OpenSSLCrypto),
     'aes-256-cfb': (32, 16, OpenSSLCrypto),
@@ -149,6 +152,14 @@ def run_method(method):
     util.run_cipher(cipher, decipher)
 
 
+def test_aes_128_gcm():
+    run_method('aes-128-gcm')
+
+
+def test_aes_256_gcm():
+    run_method('aes-256-gcm')
+
+
 def test_aes_128_cfb():
     run_method('aes-128-cfb')
 
@@ -178,4 +189,4 @@ def test_rc4():
 
 
 if __name__ == '__main__':
-    test_aes_128_cfb()
+    test_aes_256_gcm()
